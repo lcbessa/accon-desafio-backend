@@ -4,26 +4,26 @@ services:
     restart: always
     container_name: postgres
     environment:
-      POSTGRES_DB: orders
+      POSTGRES_DB: accon_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: nest-docker-postgres
-    environment:
-      PORT: ${PORT:-3000}
-    ports:
-      - "3000:3000"
-    depends_on:
-      - database
-    volumes:
-      - ./src:/app/src
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: nest-docker-postgres
+  #   environment:
+  #     PORT: ${PORT:-3000}
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - database
+  #   volumes:
+  #     - ./src:/app/src
 
   pgadmin:
     image: dpage/pgadmin4
