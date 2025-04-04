@@ -18,6 +18,11 @@ export class OrderService {
     return await this.ordersRepository.save(newOrder);
   }
 
+  async createMany(requestOrderDTOs: RequestOrderDTO[]) {
+    const newOrders = this.ordersRepository.create(requestOrderDTOs);
+    return await this.ordersRepository.save(newOrders);
+  }
+
   async findAll() {
     return await this.ordersRepository.find();
   }
